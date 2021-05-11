@@ -1,0 +1,20 @@
+{
+    "name": "alprod/design-patterns",
+    "description": "Travail des design patterns",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Alprod",
+            "email": "41442860+Alprod@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "ext-iconv": "*",
+        "ext-readline": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
