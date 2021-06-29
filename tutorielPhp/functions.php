@@ -234,21 +234,27 @@ function creneaux_html(array $creneaux) : string
 {
 	$horaires = [];
 	foreach ($creneaux as $creneau) {
-		$horaires[] = " de <strong>{$creneau[0]}h</strong> à <strong>{$creneau[1]}h</strong>";
+		$horaires[] = " <strong>{$creneau[0]}h</strong> / <strong>{$creneau[1]}h</strong>";
 	}
-	$horaire = implode(" et ", $horaires);
+	$horaire = implode(" & ", $horaires);
 	return $horaire;
 }
 
 function joursOuverture($jours, $crenaux) : string
 {
 	$phrase = '';
+
 	foreach ($jours as $k => $jour) {
-		$phrase .= '<li class="p-1">';
-		if(empty(creneaux_html( $crenaux[$k]))) {
-			$phrase .= $jour." : <span class='text-danger fst-italic'>Fermé</span>";
+		if($k + 1  === (int) date('N')) {
+			$class = 'text-success';
 		}else {
-			$phrase .= $jour.' '.creneaux_html( $crenaux[$k]);
+			$class = "text-dark";
+		}
+		$phrase .= '<li class="p-1">';
+		if ( empty( creneaux_html( $crenaux[ $k ] ))) {
+			$phrase .= "<strong> $jour </strong> : <span class='text-danger fst-italic'>Fermé</span>";
+		} else {
+			$phrase .= "<strong class= $class > $jour </strong> : " . creneaux_html( $crenaux[ $k ] );
 		}
 		$phrase .= '</li>';
 	}

@@ -17,6 +17,7 @@ require './Base/header.php';
     </div>
     <div class="col-md-4 m-5">
         <h1 class="h2 my-5 fw-normal">Horaire d'ouverture</h1>
+        <p><?= date('N') ?></p>
         <p>Nous sommes ouvert :</p>
         <ul class="list-unstyled mt-2">
             <?= joursOuverture(JOURS, CRENEAUX) ?>
